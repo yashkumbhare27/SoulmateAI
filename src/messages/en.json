@@ -1,0 +1,31 @@
+{
+  "Landing": {
+    "title": "Find your soulmate with AI",
+    "subtitle": "Discover deep connections through intelligent matching",
+    "getStarted": "Get Started",
+    "login": "Login"
+  },
+  "Auth": {
+    "loginTitle": "Welcome back",
+    "signupTitle": "Create your account",
+    "emailLabel": "Email address",
+    "passwordLabel": "Password",
+    "submitBtn": "Continue"
+  },
+  "Dashboard": {
+    "greeting": "Hello, {name}",
+    "matches": "Your Matches",
+    "messages": "Messages"
+  },
+  "MatchDetails": {
+    "compatibility": "Compatibility Score",
+    "interests": "Shared Interests",
+    "sendMessage": "Send Message"
+  },
+  "ProfileWizard": {
+    "step1": "Basic Info",
+    "step2": "Preferences",
+    "step3": "Photos",
+    "save": "Save Profile"
+  }
+}

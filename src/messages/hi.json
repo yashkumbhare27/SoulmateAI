@@ -1,0 +1,31 @@
+{
+  "Landing": {
+    "title": "AI के साथ अपना जीवनसाथी खोजें",
+    "subtitle": "बुद्धिमान मिलान के माध्यम से गहरे संबंध खोजें",
+    "getStarted": "शुरू करें",
+    "login": "लॉग इन करें"
+  },
+  "Auth": {
+    "loginTitle": "वापसी पर स्वागत है",
+    "signupTitle": "अपना खाता बनाएं",
+    "emailLabel": "ईमेल पता",
+    "passwordLabel": "पासवर्ड",
+    "submitBtn": "जारी रखें"
+  },
+  "Dashboard": {
+    "greeting": "नमस्ते, {name}",
+    "matches": "आपके मेल",
+    "messages": "संदेश"
+  },
+  "MatchDetails": {
+    "compatibility": "अनुकूलता स्कोर",
+    "interests": "साझा रुचियां",
+    "sendMessage": "संदेश भेजें"
+  },
+  "ProfileWizard": {
+    "step1": "मूल जानकारी",
+    "step2": "प्राथमिकताएं",
+    "step3": "तस्वीरें",
+    "save": "प्रोफ़ाइल सहेजें"
+  }
+}
