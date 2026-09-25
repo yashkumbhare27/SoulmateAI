@@ -2,70 +2,107 @@
 
 import React from 'react';
 import MatchStack from '@/components/dashboard/MatchStack';
-import { Filter, Flame, Users, Activity } from 'lucide-react';
-import GlassCard from '@/components/ui/GlassCard';
+import { Filter, Flame, Users, Activity, Sparkles, Heart, Crown } from 'lucide-react';
+import { GlassCard } from '@/components/ui/GlassCard';
+import { Button } from '@/components/ui/Button';
+import Link from 'next/link';
 
 export default function DashboardPage() {
   return (
-    <div className="max-w-5xl mx-auto p-4 md:p-8 h-full flex flex-col">
+    <div className="max-w-6xl mx-auto h-full flex flex-col space-y-6">
       {/* Header Area */}
-      <header className="flex items-center justify-between mb-8">
+      <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl md:text-4xl font-display font-bold text-white mb-2">Discover Soulmates</h1>
-          <p className="text-white/60">Based on your latest psychological profile analysis.</p>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="px-3 py-1 rounded-full text-xs font-black bg-pink-500/15 text-pink-600 dark:text-pink-400 border border-pink-500/30 uppercase tracking-wider">
+              ✨ Discover Mode
+            </span>
+          </div>
+          <h1 className="text-3xl md:text-5xl font-display font-black gradient-brand-text">
+            Recommended Soulmates
+          </h1>
+          <p className="text-sm md:text-base text-plum-black/75 dark:text-cream/75 mt-1">
+            Curated via multi-factor values alignment, cultural intent, and lifestyle compatibility.
+          </p>
         </div>
-        <button className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
-          <Filter className="w-5 h-5" />
-        </button>
+        <div className="flex items-center gap-3">
+          <Link href="/profile/create">
+            <Button variant="primary" size="sm" className="shadow-md">
+              <Sparkles size={14} className="mr-1.5" /> Adjust AI Preferences
+            </Button>
+          </Link>
+        </div>
       </header>
 
-      <div className="flex-1 flex flex-col lg:flex-row gap-8 min-h-0">
+      <div className="flex-1 flex flex-col lg:flex-row gap-8 min-h-0 items-start">
         {/* Left Col: Match Stack */}
-        <div className="flex-1 flex flex-col items-center justify-center min-h-[650px] relative">
+        <div className="flex-1 flex flex-col items-center justify-center w-full min-h-[660px] relative">
           <MatchStack />
         </div>
 
-        {/* Right Col: Stats / Banners */}
-        <div className="w-full lg:w-80 flex flex-col gap-6 overflow-y-auto pr-2 pb-10 md:pb-0">
+        {/* Right Col: Stats / Soulmate Highlight Banners */}
+        <div className="w-full lg:w-88 flex flex-col gap-6">
           
           {/* Soulmate of the Day */}
-          <div className="rounded-3xl bg-gradient-to-br from-dusty-rose-400 to-[#8B5FBF] p-1 shadow-xl relative overflow-hidden group">
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20 mix-blend-overlay"></div>
-            <div className="bg-plum-black/40 backdrop-blur-md p-6 rounded-[22px] h-full relative z-10 border border-white/10">
-              <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-xs font-bold text-white tracking-wider mb-4 border border-white/20">
-                SOULMATE OF THE DAY
-              </span>
-              <h3 className="text-2xl font-display font-bold text-white mb-2 leading-tight">Highly Compatible Profile Alert!</h3>
-              <p className="text-white/80 text-sm mb-4">We found someone with a 98% value alignment score who just joined.</p>
-              <button className="w-full py-3 bg-white text-plum-black font-bold rounded-xl hover:bg-white/90 transition-colors shadow-lg">
-                View Profile
-              </button>
+          <div className="rounded-[32px] bg-gradient-to-br from-pink-500 via-rose-500 to-amber-400 p-[2px] shadow-[0_15px_40px_rgba(244,63,94,0.3)] group">
+            <div className="bg-white/90 dark:bg-[#1A031E]/95 backdrop-blur-2xl p-6 rounded-[30px] h-full relative z-10 space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-500/15 text-xs font-black text-pink-600 dark:text-pink-400 border border-pink-500/30">
+                  <Crown size={12} className="text-amber-500" /> HIGHEST COMPATIBILITY
+                </span>
+                <span className="text-xs font-extrabold text-amber-500">98% Match</span>
+              </div>
+
+              <h3 className="text-2xl font-serif font-black text-plum-black dark:text-cream leading-snug">
+                Priya S., 28
+              </h3>
+              <p className="text-plum-black/80 dark:text-cream/80 text-xs sm:text-sm leading-relaxed">
+                Software Engineer & Classical Dancer in Mumbai. Shares your passion for family traditions and fitness.
+              </p>
+
+              <Link href="/matches/match-1" className="block">
+                <Button variant="primary" className="w-full shadow-md py-3 text-xs sm:text-sm">
+                  <Heart size={14} className="mr-1.5 fill-white" /> View Full Compatibility Report
+                </Button>
+              </Link>
             </div>
           </div>
 
           {/* Quick Stats Widget */}
-          <GlassCard className="p-6">
-            <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-              <Activity className="w-5 h-5 text-amber-400" /> Your Pulse
+          <GlassCard className="p-6 border-pink-300/40 dark:border-pink-800/40 shadow-lg" variant="default">
+            <h3 className="text-base font-serif font-bold text-plum-black dark:text-cream mb-4 flex items-center gap-2">
+              <Activity className="w-4 h-4 text-pink-500" /> 
+              <span>Your Matrimonial Pulse</span>
             </h3>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
+            <div className="space-y-3.5">
+              <div className="flex items-center justify-between p-3 rounded-2xl bg-pink-50/60 dark:bg-pink-950/20 border border-pink-200/40 dark:border-pink-900/30">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-white/5">
-                    <Users className="w-4 h-4 text-white/60" />
+                  <div className="p-2 rounded-xl bg-pink-500/15 text-pink-600 dark:text-pink-400">
+                    <Users className="w-4 h-4" />
                   </div>
-                  <span className="text-white/80 text-sm">Profile Views</span>
+                  <span className="text-plum-black/80 dark:text-cream/80 text-xs sm:text-sm font-semibold">Profile Views</span>
                 </div>
-                <span className="font-bold text-white">24</span>
+                <span className="font-extrabold text-sm sm:text-base text-pink-600 dark:text-pink-400">38</span>
               </div>
-              <div className="flex items-center justify-between">
+
+              <div className="flex items-center justify-between p-3 rounded-2xl bg-rose-50/60 dark:bg-rose-950/20 border border-rose-200/40 dark:border-rose-900/30">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-white/5">
-                    <Flame className="w-4 h-4 text-rose-400" />
+                  <div className="p-2 rounded-xl bg-rose-500/15 text-rose-600 dark:text-rose-400">
+                    <Flame className="w-4 h-4" />
                   </div>
-                  <span className="text-white/80 text-sm">Mutual Matches</span>
+                  <span className="text-plum-black/80 dark:text-cream/80 text-xs sm:text-sm font-semibold">Mutual High Matches</span>
                 </div>
-                <span className="font-bold text-white">3</span>
+                <span className="font-extrabold text-sm sm:text-base text-rose-600 dark:text-rose-400">7</span>
+              </div>
+
+              <div className="flex items-center justify-between p-3 rounded-2xl bg-purple-50/60 dark:bg-purple-950/20 border border-purple-200/40 dark:border-purple-900/30">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-xl bg-purple-500/15 text-purple-600 dark:text-purple-400">
+                    <Sparkles className="w-4 h-4" />
+                  </div>
+                  <span className="text-plum-black/80 dark:text-cream/80 text-xs sm:text-sm font-semibold">Active 7-Day Chats</span>
+                </div>
+                <span className="font-extrabold text-sm sm:text-base text-purple-600 dark:text-purple-400">2</span>
               </div>
             </div>
           </GlassCard>
