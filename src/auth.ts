@@ -19,12 +19,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           return null;
         }
 
+        const identifier = credentials.identifier as string;
+        const code = credentials.code as string;
+        const name = (credentials.name as string) || 'Demo User';
+
         // Universal Demo OTP Fallback (Offline Mode)
-        if (credentials.code === '123456') {
+        if (code === '123456') {
           return {
             id: 'demo-user-1',
-            name: (credentials.name as string) || 'Demo User',
-            email: credentials.identifier.includes('@') ? credentials.identifier : undefined,
+            name,
+            email: identifier.includes('@') ? identifier : undefined,
             role: 'user',
           };
         }
@@ -35,8 +39,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             if (db) {
               // Verify OTP
               const otpRecord = await OTP.findOne({
-                identifier: credentials.identifier,
-                code: credentials.code,
+                identifier,
+                code,
                 expiresAt: { $gt: new Date() },
               });
 
@@ -49,13 +53,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
               // Find or create user
               let user = await User.findOne({
-                $or: [{ phone: credentials.identifier }, { email: credentials.identifier }],
+                $or: [{ phone: identifier }, { email: identifier }],
               });
 
               if (!user) {
                 user = await User.create({
-                  phone: credentials.identifier,
-                  name: credentials.name || 'New User',
+                  phone: identifier,
+                  name: name || 'New User',
                 });
               }
 
@@ -71,10 +75,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           return null;
         } catch (error) {
           console.error('Auth Error:', error);
-          if (credentials.code === '123456') {
+          if (code === '123456') {
             return {
               id: 'demo-user-1',
-              name: (credentials.name as string) || 'Demo User',
+              name,
               role: 'user',
             };
           }
