@@ -5,6 +5,7 @@ import { User } from '@/lib/models/User';
 import { OTP } from '@/lib/models/OTP';
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  trustHost: true,
   providers: [
     CredentialsProvider({
       id: 'otp-credentials',
